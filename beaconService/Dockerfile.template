@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-node:22-latest-build as build
+FROM balenalib/%%BALENA_MACHINE_NAME%%-64-node:20-latest-build as build
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN npm install influxdb-v2
 RUN npm install date-and-time
 RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean --force && rm -rf /tmp/*
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-node:12-latest-run
+FROM balenalib/%%BALENA_MACHINE_NAME%%-64-node:20-latest-run
 
 #Set permissions to allow BLE scanning
 RUN sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
