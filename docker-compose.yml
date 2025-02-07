@@ -1,12 +1,12 @@
 version: '2.1'
 services:
     beaconService:
-        build: beaconService
+        build: ./beaconService
         privileged: true
         restart: always
         network_mode: host
     dashboard:
-        build: dashboard
+        build: ./dashboard
         ports: 
             - 80:80
         privileged: true
